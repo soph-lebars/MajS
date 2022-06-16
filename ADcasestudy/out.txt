@@ -1,0 +1,125 @@
+# Iggy Report
+
+## Settings
+
+- All observed changes must be explained by a predecessor.
+- 0-change must be explained.
+- All observed changes must be explained by an input.
+
+Network file: regfromdag.cif
+
+## Network statistics
+
+- OR nodes (species): 94
+- AND nodes (complex regulation): 0
+- Activations: 281
+- Inhibitions: 4
+- Unknowns:    0
+
+Observation file: Benchmark1_minus.obs
+
+## Observations statistics
+
+- Observed model nodes:   54
+- Unobserved model nodes: 40
+- Observed not in model:  0
+- Inputs:                 0
+- MIN:                    0
+- MAX:                    0
+- Observations:           54
+  - +:                    17
+  - -:                    25
+  - 0:                    12
+  - notPlus:              0
+  - notMinus:             0
+
+Computed input nodes: 10
+- INS
+- CAMK2B
+- CYBB
+- IFNG
+- TLR4
+- IGF1
+- CAMK2A
+- VHL
+- IL6
+- CAMK2G
+
+## Consistency results
+
+mcos: 8
+
+
+## Predictions
+
+ARNT = 0
+SERPINE1 = 0
+VHL = 0
+CREBBP = 0
+INS = 0
+PRKCA = 0
+IFNG = 0
+TLR4 = 0
+AKT1 = 0
+LDHAL6B = 0
+PLCG2 = 0
+MAPK3 = 0
+MTOR = -
+CAMK2B = -
+MAPK1 = -
+PIK3CA = -
+TIMP1 = -
+HIF1A = -
+PFKM = -
+NOS2 = -
+RPS6KB2 = -
+PIK3R3 = -
+IFNGR1 = -
+LDHC = -
+ALDOC = -
+TFRC = -
+MAP2K1 = -
+PIK3CB = -
+TF = -
+LDHB = -
+AKT3 = -
+EIF4E = -
+PFKP = -
+EGF = -
+EIF4E2 = -
+CAMK2A = -
+IFNGR2 = -
+MKNK1 = -
+TEK = +
+EGFR = +
+PRKCG = +
+IL6 = +
+IL6R = +
+VEGFA = +
+HMOX1 = +
+PLCG1 = +
+EP300 = +
+IGF1 = +
+MAP2K2 = +
+ANGPT1 = +
+CAMK2G = +
+RPS6KB1 = +
+ANGPT2 = +
+AKT2 = +
+PRKCB = +
+RELA = +
+NFKB1 = +
+PIK3R1 = +
+IGF1R = +
+PFKFB3 = +
+CYBB = notMinus
+STAT3 = CHANGE
+
+## Prediction statistics
+
+- predicted +        : 22
+- predicted -        : 26
+- predicted 0        : 12
+- predicted notPlus  : 0
+- predicted notMinus : 1
+- predicted CHANGE   : 1

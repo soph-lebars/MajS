@@ -1,0 +1,1 @@
+clingo -n 0 ../script/logical_rules.lp instancetoynetwork.lp --const k=2 --opt-mode=optN,2 --project -W none | perl -ne '$k++ if /Answer: 1/; if(/Answer: 1/ .. /OPTIMUM/){print if $k==2}' > out_optsolution_toynet.txt
