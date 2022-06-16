@@ -1,5 +1,5 @@
 
-#Toy case study instance
+# Toy case study instance
 
 The instance of our program represents an interaction graph (IG) and a list of discrete observation. This can be found in  in **instancetoynetwork.lp**.
 
