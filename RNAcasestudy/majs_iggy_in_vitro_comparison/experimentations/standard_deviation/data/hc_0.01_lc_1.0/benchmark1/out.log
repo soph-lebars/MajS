@@ -1,0 +1,32 @@
+Load majS' file...
+Load RNA's file...
+Load Iggy's file...
+Load observations' file...
+
+
+ ------------
+
+
+### Mean and Std - All fold change dataset ###
+{'plus': {'mean': 0.48879672580739564, 'sd': 0.3018030386210215, 'len': 3759}, 'minus': {'mean': -0.39414940589599273, 'sd': 0.21944997649779735, 'len': 4442}}
+
+
+ ------------
+
+
+### Statistics of the comparison of MajS and Iggy ###
+{'majs>iggy': 11, 'iggy>majs': 5, 'equal': 14, 'no_iggy': 0, 'dist_majs': {'sum': 0.08874389451520306, 'mean': 0.00806762677410937}, 'dist_iggy': {'sum': 2.987809689452522e-54, 'mean': 5.975619378905044e-55}}
+
+
+ ------------
+
+
+### Gene score higher than the threshold '0.01' ###
+{'majs': 2, 'iggy': 1, 'no_iggy': 0}
+
+
+ ------------
+
+
+Export non-observed data...
+DONE.
