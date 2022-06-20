@@ -15,7 +15,7 @@ weight(0..100). %All possible weights for observed or predicted nodes.
 
 
 
-%%%%%%%%%%%%%%%%%%%%Possible complete weighted labellings%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%Possible complete weighted labellings (Section 3.2 le bars et al. BMC supplements)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 1{labelV(I,S,W) : sign(S) , weight(W)}1 :- vertex(I).%Generate a weighted label (labelV) for each node in the IG.
@@ -29,7 +29,7 @@ input(P):-vertex(P),not observedE(_,P,_).%Retrieve nodes of the network without 
 :- input(I),labelV(I,S,W), W!=100.%Fix the weight of the input node to 100.
 
 
-%%%%%%%%%%%%%%%%%%%%Test rules MajotitySign%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%Test rules MajotitySign (Section 3.1.2 le bars et al. BMC supplements)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -75,7 +75,7 @@ labelV(I,S,0) :- labelV(I,S,_); signmaj(I,S); fixed(I);S!=0; not forbidden(I,S).
 
 
 
-%%%%%%%%%%%%%%%%%%%%Consistency%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%Consistency (Section 3.1.3 le bars et al. BMC supplements)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 forbidden(N,S) :- vertex(N); not input(N); not signmaj(N,S);observedV2(N,S); S!=0.%If a node is observed, its majority sign cannot be different to its observed sign, so we forbid this event to occur with the predicate forbidden. (forbidden: node, sign).
@@ -88,7 +88,7 @@ pred(I,S,W):- labelV(I,S,W); not forbidden(I,S).%A node is consistent if its wei
 :- nodeforbidden(X,S),sign(S),vertex(X).%This line prevents node forbidden from occurring in the proposed answer sets.
 
 
-%%%%%%%%%%%%%%%%%%%%Repairs%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%Repairs (Section 3.1.3 le bars et al. BMC supplements)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 new_influence(X,1) :- not not new_influence(X,1), not new_influence(X,-1), vertex(X).%Generate new negative influence in the graph to reestablish consistency. Same line as Iggy.
@@ -111,7 +111,7 @@ fixed(I) :- vertex(I), parentsigne(P,I,_),name(P).%Predicate to know if a node i
 0{parentsigne(P,E,S):name(P)}k:- new_influence(E,S), vertex(E).%Add artificial nodes to the network from 0 to k per node present in the network.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Optimisation%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Optimisation (Section 3.1.4 le bars et al. BMC supplements)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 #minimize{
@@ -121,7 +121,7 @@ fixed(I) :- vertex(I), parentsigne(P,I,_),name(P).%Predicate to know if a node i
 
 
  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Print results (optimal answer sets)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Print results (optimal answer sets Section 3.1.4 le bars et al. BMC supplements)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 #show pred/3. %Weighted label of nodes in the graph
