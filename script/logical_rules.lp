@@ -29,7 +29,7 @@ input(P):-vertex(P),not observedE(_,P,_).%Retrieve nodes of the network without 
 :- input(I),labelV(I,S,W), W!=100.%Fix the weight of the input node to 100.
 
 
-%%%%%%%%%%%%%%%%%%%%Test rules MajotitySign (Section 3.1.2 le bars et al. BMC supplements)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%Test rules MajoritySign (Section 3.1.2 le bars et al. BMC supplements)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -51,7 +51,7 @@ parentsigne(P,E,S*Y):- observedE(P,E,Y),labelV(P,S,X).%Get for a node its parent
 
 countsign(I,X,Y):-vertex(I),sign(X),Y=#count{P:parentsigne(P,I,X)},not input(I).%Count for a node the number of parents nodes giving the same influences between three possible received influences (-1, +1, 0). The node will have a number associated (Y) for each possible received influence. If it doesn't receive any influence, this number will be 0. (countsign: node, received influence sign, number of received influences for the sign).
 
-signmaj(I,X) :- vertex(I), countsign(I,X,S1), countsign(I,Y,S2), S1>S2,X!=0,Y!=0.%For a node (I) gives its majoritarian sign between -1 and 1 (0 are manage in Balanced).
+signmaj(I,X) :- vertex(I), countsign(I,X,S1), countsign(I,Y,S2), S1>S2,X!=0,Y!=0.%For a node (I) gives its majoritarian sign between -1 and 1 (0 are managed in Balanced).
 
 
 %%%Balanced%%%
@@ -62,12 +62,12 @@ labelV(I,0,100) :-vertex(I); not signmaj(I,_), countsign(I,1,Z),countsign(I,-1,Z
 labelV(I,0,100) :- vertex(I); not signmaj(I,_), countsign(I,0,Z),Z=#count{P:parent(P,I,_)} ,not forbidden(I,0), not fixed(I).%For a node, if all the received influences are "0" influences, it will be signed as "0".
 
 
-%%%Weight assignement%%%
+%%%Weight assignment%%%
 
 sumweight(I,X,Y):-vertex(I),sign(X),Y=#sum{Z,P:parent(P,I,Z),parentsigne(P,I,X)},not input(I).%Sum for a node the total weight associated with its received influences (-1,+1,0). (sumweight: node, received influence sign, the total weight associated with the received influence sign).
 
 
-labelV(I,S,W) :- signmaj(I,S); sumweight(I,S,N) ; C=#count{P:parent(P,I,_)};W=N/C; S!=0; not forbidden(I,S);not fixed(I)..%If the node is consistent and not repaired (not forbidden, not fixed) and has a majoritarian sign (S:{1,-1}). Its weight is equal to the ratio between the sum of the parent's weights, holding the majoritarian sign, and its number of parents. 
+labelV(I,S,W) :- signmaj(I,S); sumweight(I,S,N) ; C=#count{P:parent(P,I,_)};W=N/C; S!=0; not forbidden(I,S);not fixed(I).%If the node is consistent and not repaired (not forbidden, not fixed) and has a majoritarian sign (S:{1,-1}). Its weight is equal to the ratio between the sum of the parent's weights, holding the majoritarian sign, and its number of parents. 
 labelV(I,S,0) :- labelV(I,S,_); signmaj(I,S); fixed(I);S!=0; not forbidden(I,S).%If a node with a majoritarian sign is repaired, then its weight is fixed to 0.
 
 :- labelV(I,S,0),not signmaj(I,S),S!=0.%We cannot have a weighted label with a sign not equal to 0 if it does not have a majoritarian sign. 
